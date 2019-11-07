@@ -1,0 +1,27 @@
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        
+        int s_in = 0;
+        int r_in = 0;
+        
+        vector<string> res(numRows);
+        while(true)
+        {
+            r_in = 0;
+            while(r_in < numRows && s_in < s.size())
+                res[r_in++].push_back(s[s_in++]);
+            
+            r_in--;
+            while(r_in > 1 && s_in < s.size())
+                res[--r_in].push_back(s[s_in++]);
+            if(s_in == s.size())
+                break;
+        }
+        string re;
+        for(int index = 0;index < numRows; ++index)
+            re += res[index];
+        return re;
+        
+    }
+};
